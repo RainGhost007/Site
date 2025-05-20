@@ -51,15 +51,14 @@ public class ElixirSagrado{
                         System.out.println(ciclos+" e "+densidade+" = "+densidade*ciclos);
 						soma += densidade * ciclos;
                     }
-                    else {if (ciclos == vet[j] - 1 && ciclos >= 20){
+                    	else {if (ciclos == vet[j] - 1 && ciclos >= 20){
                         System.out.println((ciclos+1)+" e "+densidade+" = "+ densidade *(ciclos+1));
-						soma += densidade * (ciclos+1);
-                    }
-                    } 
-                }
-				System.out.println(ciclos+" e "+densidade+" = "+densidade*ciclos);
+						soma += densidade * (ciclos+1);}
+                    	} 
+        	}
+		System.out.println(ciclos+" e "+densidade+" = "+densidade*ciclos);
             }    
         }
-		System.out.println(soma);
+	System.out.println(soma);
     }
 }
