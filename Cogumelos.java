@@ -8,7 +8,7 @@ import java.util.Scanner;
 	
 public class Cogumelos {
 	public static void main(String[] args) {
-	Scanner sc1 = new Scanner(System.in);
+		Scanner sc1 = new Scanner(System.in);
 		
 		int i = 0;
 		int[][] cogus = new int[800][];
@@ -23,35 +23,32 @@ public class Cogumelos {
 			String[] vetor = cogumelos.split(",");
 
 			int[] cogu = new int[vetor.length];
-    		for (int j = 0; j < vetor.length; j++) {
-        		cogu[j] = Integer.parseInt(vetor[j]);
-    		}
+    			for (int j = 0; j < vetor.length; j++) {
+        			cogu[j] = Integer.parseInt(vetor[j]);
+    			}
 			cogus[i] = cogu;
 			i++;
 			
 		}
 		int mod = 1000000007;
 		long resposta = 1;
-        for (int h = 0; h < cogus.length; h++) {
-            if(pulo(cogus[h], 0) == false){ 
+        	for (int h = 0; h < cogus.length; h++) {
+           		if(pulo(cogus[h], 0) == false){ 
 				resposta =( resposta * (h+1)) % mod;
 				System.out.println(resposta);
 			}
-        }
+        	}
 	}
 	public static boolean pulo(int[] cogu, int indice){
 		int tam = cogu.length - 1;
+
+		if(cogu[tam] == 0 || cogu[0] == 0){return false;}	
 		if(indice > tam){indice = tam;}
-		int valor = cogu[indice];
 		int x = 0;
 		
-		if(cogu[tam] == 0 || cogu[0] == 0){return false;}
-		if(indice == tam && cogu[tam] > 0){return true;}
-		for(int i = cogu[indice];; i--){
-			if(indice + i > tam){if(cogu[tam] != 0){x = i;break;}}
-				else if(cogu[indice+i] != 0){x = i; break;}
-					else if(i == 0){return false;}
-		}
-		return pulo(cogu,valor+x);
+		if(indice >= tam && cogu[tam] > 0){return true;}
+		for(int i = cogu[indice];i > 0; i--){ if(indice + i <= tam && cogu[indice+i] > 0){x = i; break;}}
+		if(x == 0){return false;}
+		return pulo(cogu,indice+x);
 	}
 }
